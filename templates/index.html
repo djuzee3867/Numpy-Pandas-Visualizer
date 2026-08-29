@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>numpy / pandas visualizer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Numpy / Pandas visualizer</h1>
+    </div>
+    <div class="topbar-actions">
+      <button id="theme" class="icon-btn" title="Theme">◐</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="col col-left">
+      <div class="panel panel-code">
+        <div class="panel-head">
+          <span class="panel-title">Code</span>
+          <span class="head-tools">
+            <select id="examples" title="Load an example">
+              <option value="">Examples</option>
+            </select>
+            <label class="tool"><input type="checkbox" id="wrap"> wrap</label>
+            <input type="range" id="font-size" class="tool-range" min="11" max="18" step="1"
+                   value="13" title="Editor font size">
+          </span>
+        </div>
+        <div class="panel-body">
+          <div class="editor" id="editor">
+            <div class="edit-gutter" id="edit-gutter"></div>
+            <div class="edit-stack">
+              <div class="hl-layer" id="hl-layer" aria-hidden="true"></div>
+              <textarea id="code" spellcheck="false" autocomplete="off"
+                        placeholder="# Write Python here, or pick one from Examples"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="legend" id="legend">
+          <span class="legend-item"><span class="arrow just">➡</span> line that just executed</span>
+          <span class="legend-item"><span class="arrow next">➡</span> next line to execute</span>
+        </div>
+        <div class="panel-foot">
+          <button id="run" class="primary-btn">▶ Visualize Execution</button>
+          <button id="reset" class="ghost-btn" disabled>Reset</button>
+          <span class="status" id="status"></span>
+        </div>
+      </div>
+
+      <div class="splitter splitter-h" id="split-h" title="Drag to resize"></div>
+
+      <div class="panel panel-out">
+        <div class="panel-head">
+          <span class="panel-title">Print output (stdout)</span>
+        </div>
+        <pre class="stdout empty" id="stdout">— no output yet —</pre>
+      </div>
+    </section>
+
+    <div class="splitter splitter-v" id="split-v" title="Drag to resize"></div>
+
+    <section class="col col-right">
+      <div class="banner hidden" id="banner"></div>
+
+      <div class="ask hidden" id="ask">
+        <div class="ask-title">Waiting for input</div>
+        <div class="ask-prompt" id="ask-prompt"></div>
+        <form class="ask-row" id="ask-form">
+          <input type="text" id="ask-value" autocomplete="off" spellcheck="false"
+                 placeholder="type a value, then Enter">
+          <button type="submit" class="primary-btn">Send</button>
+        </form>
+      </div>
+
+      <div class="heap" id="heap">
+        <svg class="wires" id="wires" aria-hidden="true">
+          <defs>
+            <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" class="arrowhead-fill"></path>
+            </marker>
+          </defs>
+        </svg>
+
+        <div class="explain hidden" id="explain"></div>
+
+        <div class="heap-cols hidden" id="heap-cols">
+          <div class="heap-col">
+            <div class="col-title">Frames</div>
+            <div id="frames"></div>
+          </div>
+          <div class="heap-col">
+            <div class="col-title">Objects</div>
+            <div id="objects"></div>
+          </div>
+        </div>
+
+        <div class="placeholder" id="placeholder">
+          <span class="big">< ></span>
+         <b> Write code and press Visualize Execution</b>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="stepbar">
+    <input type="range" id="slider" class="step-slider" min="0" max="0" value="0" disabled>
+    <div class="step-row">
+      <span class="step-side"></span>
+      <div class="step-controls">
+        <button id="first" title="First step (Home)" disabled>&lt;&lt; First</button>
+        <button id="prev" title="Previous step (←)" disabled>&lt; Prev</button>
+        <span class="step-label">Step <b id="step-now">–</b> of <span id="step-total">–</span></span>
+        <button id="next" title="Next step (→ or Space)" disabled>Next &gt;</button>
+        <button id="last" title="Last step (End)" disabled>Last &gt;&gt;</button>
+      </div>
+      <span class="step-side step-desc" id="step-desc"></span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
