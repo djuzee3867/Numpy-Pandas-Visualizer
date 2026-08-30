@@ -1,7 +1,5 @@
 # Numpy Pandas Visualizer
 
-
-
 A step-by-step visualizer for Python code, built for teaching **numpy** and **pandas**.
 
 It started from using [pythontutor.com](https://pythontutor.com/visualize.html). That tool
@@ -9,8 +7,8 @@ is excellent for teaching plain Python, but it does not cover numpy and pandas â
 exactly the parts students find hardest to picture, because the interesting work happens inside a
 single line. So this was built to teach them: same idea, extended to arrays and dataframes, with
 the option to open one line up and walk through what it does. 
-See demo at
 
+# Website<br>
 [Numpy Pandas Visualizer](https://numpy-pandas-visualizer.djuzee.site/) 
 
 [DEMO](https://project.djuzee.site/python)
