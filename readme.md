@@ -11,7 +11,7 @@ the option to open one line up and walk through what it does.
 # Website<br>
 [Numpy Pandas Visualizer](https://numpy-pandas-visualizer.djuzee.site/) 
 
-[DEMO](https://project.djuzee.site/python)
+[Backup website](https://project.djuzee.site/python)
 
 ## Quick Start
 
